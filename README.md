@@ -145,8 +145,8 @@ registry.register("my_custom", MyCustomHandler);
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ratatui_axos_app.git
-cd ratatui_axos_app
+git clone https://github.com/NeoTech/ratatui_axum_server.git
+cd ratatui_axum_server
 
 # Build the application
 cargo build
