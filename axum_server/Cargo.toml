@@ -1,0 +1,18 @@
+[package]
+name = "axum_server"
+version = "0.2.0"
+edition = "2021"
+description = "An Axum web server with a Terminal UI for monitoring"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+
+[dependencies]
+axum = { workspace = true }
+tokio = { workspace = true }
+hyper = { workspace = true }
+axum_tui = { path = "../axum_tui" }
+axum_handlers = { path = "../axum_handlers" }
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.9"
+clap = { version = "4.5.1", features = ["derive"] }
+async-trait = "0.1.77" 

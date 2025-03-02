@@ -1,0 +1,72 @@
+server:
+  host: 0.0.0.0
+  port: 4000
+
+endpoints:
+  - path: /
+    method: GET
+    handler: root
+    response: "Hello, World!"
+    description: "Root endpoint that returns a simple greeting"
+    
+  - path: /health
+    method: GET
+    handler: health
+    response: "OK"
+    description: "Health check endpoint for monitoring"
+    
+  - path: /helloworld
+    method: GET
+    handler: helloworld
+    response: "Hello, World!"
+    description: "Another greeting endpoint"
+    
+  - path: /api/status
+    method: GET
+    handler: status
+    response: "{ \"status\": \"running\", \"version\": \"1.0.0\" }"
+    description: "API status endpoint that returns JSON"
+    
+  # Custom handlers
+  - path: /api/user/{id}
+    method: GET
+    handler: user
+    response: ""
+    description: "Get user data by ID"
+    params:
+      database: "users"
+      format: "json"
+      
+  - path: /api/resource
+    method: GET
+    handler: resource_get
+    response: ""
+    description: "Get a resource"
+    
+  - path: /api/resource/{id}
+    method: GET
+    handler: resource_get
+    response: ""
+    description: "Get a resource by ID"
+    
+  - path: /api/resource
+    method: POST
+    handler: resource_create
+    response: ""
+    description: "Create a new resource"
+    params:
+      validate: "true"
+      
+  - path: /api/resource
+    method: PUT
+    handler: resource_update
+    response: ""
+    description: "Update an existing resource"
+    params:
+      validate: "true"
+      
+  - path: /api/resource
+    method: DELETE
+    handler: resource_delete
+    response: ""
+    description: "Delete a resource" 

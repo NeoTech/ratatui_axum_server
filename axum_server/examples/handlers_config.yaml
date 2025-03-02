@@ -1,0 +1,64 @@
+server:
+  host: 127.0.0.1
+  port: 3000
+
+endpoints:
+  # Static response handler (default)
+  - path: /
+    method: GET
+    handler: default
+    response: "Hello, World!"
+    description: "Root endpoint using the default handler"
+    
+  # Built-in health check handler
+  - path: /health
+    method: GET
+    handler: health
+    response: "OK"
+    description: "Health check endpoint using the built-in health handler"
+    
+  # Built-in status handler
+  - path: /api/status
+    method: GET
+    handler: status
+    response: "{ \"status\": \"running\", \"version\": \"1.0.0\" }"
+    description: "API status endpoint using the built-in status handler"
+    
+  # Example of a handler with parameters
+  - path: /api/user/{id}
+    method: GET
+    handler: user
+    response: "User data"
+    description: "Get user data by ID"
+    params:
+      database: "users"
+      format: "json"
+      
+  # Example of different HTTP methods for the same resource
+  - path: /api/resource
+    method: GET
+    handler: resource_get
+    response: "{ \"id\": 1, \"name\": \"Resource\", \"status\": \"active\" }"
+    description: "Get a resource"
+    
+  - path: /api/resource
+    method: POST
+    handler: resource_create
+    response: "{ \"status\": \"created\", \"id\": 2 }"
+    description: "Create a new resource"
+    params:
+      validate: "true"
+      
+  - path: /api/resource
+    method: PUT
+    handler: resource_update
+    response: "{ \"status\": \"updated\" }"
+    description: "Update an existing resource"
+    params:
+      validate: "true"
+      
+  - path: /api/resource
+    method: DELETE
+    handler: resource_delete
+    response: "{ \"status\": \"deleted\" }"
+    description: "Delete a resource" 

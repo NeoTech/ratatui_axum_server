@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "axum_server",
+    "axum_tui",
+    "axum_handlers"
+]
+resolver = "2"
+
+# Workspace-wide dependencies can be specified here
+[workspace.dependencies]
+ratatui = "0.26.0"
+crossterm = "0.27.0"
+tokio = { version = "1.32.0", features = ["full"] }
+axum = { version = "0.8.1", features = ["macros"] }
+hyper = "1.6.0"

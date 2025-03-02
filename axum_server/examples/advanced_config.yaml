@@ -1,0 +1,81 @@
+server:
+  host: 127.0.0.1
+  port: 8080
+
+endpoints:
+  # Basic text responses
+  - path: /
+    method: GET
+    handler: root
+    response: "Welcome to the API Server"
+    description: "Root endpoint with welcome message"
+    
+  - path: /health
+    method: GET
+    handler: health
+    response: "OK"
+    description: "Health check endpoint for monitoring"
+  
+  # JSON responses
+  - path: /api/status
+    method: GET
+    handler: status
+    response: "{ \"status\": \"running\", \"version\": \"1.0.0\" }"
+    description: "API status endpoint that returns JSON"
+    
+  - path: /api/users
+    method: GET
+    handler: get_users
+    response: "{ \"users\": [{\"id\": 1, \"name\": \"Alice\"}, {\"id\": 2, \"name\": \"Bob\"}] }"
+    description: "Returns a list of users in JSON format"
+  
+  # Different HTTP methods for the same resource
+  - path: /api/resource
+    method: GET
+    handler: get_resource
+    response: "{ \"id\": 1, \"name\": \"Resource\", \"status\": \"active\" }"
+    description: "Get a resource"
+    
+  - path: /api/resource
+    method: POST
+    handler: create_resource
+    response: "{ \"status\": \"created\", \"id\": 2 }"
+    description: "Create a new resource"
+    
+  - path: /api/resource
+    method: PUT
+    handler: update_resource
+    response: "{ \"status\": \"updated\" }"
+    description: "Update an existing resource"
+    
+  - path: /api/resource
+    method: DELETE
+    handler: delete_resource
+    response: "{ \"status\": \"deleted\" }"
+    description: "Delete a resource"
+  
+  # Nested routes
+  - path: /api/v1/products
+    method: GET
+    handler: get_products_v1
+    response: "{ \"products\": [{\"id\": 1, \"name\": \"Product 1\"}] }"
+    description: "API v1 - Get products"
+    
+  - path: /api/v2/products
+    method: GET
+    handler: get_products_v2
+    response: "{ \"products\": [{\"id\": 1, \"name\": \"Product 1\", \"details\": {\"price\": 9.99}}] }"
+    description: "API v2 - Get products with more details"
+  
+  # Error responses
+  - path: /error/not-found
+    method: GET
+    handler: not_found
+    response: "{ \"error\": \"Not found\", \"code\": 404 }"
+    description: "Example of a not found error response"
+    
+  - path: /error/server-error
+    method: GET
+    handler: server_error
+    response: "{ \"error\": \"Internal server error\", \"code\": 500 }"
+    description: "Example of a server error response" 

@@ -1,0 +1,12 @@
+[package]
+name = "axum_tui"
+version = "0.2.0"
+edition = "2021"
+description = "A Terminal UI library for Axum web applications"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+
+[dependencies]
+ratatui = { workspace = true }
+crossterm = { workspace = true }
+tokio = { workspace = true, features = ["sync"] } 

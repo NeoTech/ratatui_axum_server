@@ -1,0 +1,28 @@
+server:
+  host: 127.0.0.1
+  port: 3000
+
+endpoints:
+  - path: /
+    method: GET
+    handler: root
+    response: "Hello, World!"
+    description: "Root endpoint that returns a simple greeting"
+    
+  - path: /health
+    method: GET
+    handler: health
+    response: "OK"
+    description: "Health check endpoint for monitoring"
+    
+  - path: /helloworld
+    method: GET
+    handler: helloworld
+    response: "Hello, World!"
+    description: "Another greeting endpoint"
+    
+  - path: /api/status
+    method: GET
+    handler: status
+    response: "{ \"status\": \"running\", \"version\": \"1.0.0\" }"
+    description: "API status endpoint that returns JSON" 
